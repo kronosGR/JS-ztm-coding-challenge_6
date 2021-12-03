@@ -35,8 +35,21 @@ function room(arrayInput) {
 // find two different numbers in the array that, when added together, give the target number. For example: answer([1,2,3], 4) should
 // return [1,3]
 
+const array2 = [1, 2, 4, 4, 2, 1, 5];
+
+function answer(arr, target) {
+  for (let i = 0; arr.length; i++) {
+    for (let k = i + 1; k < arr.length; k++) {
+      if (arr[i] + arr[k] == target) return [arr[i], arr[k]];
+    }
+  }
+  return [];
+}
+
 // Question 3: Write a function that converts HEX to RGB. Then Make that function autodect the formats so that if you enter
 // HEX color format it returns RGB and if you enter RGB color format it returns HEX. Bonus: Release this tool as a npm package.
 
-
+console.log('Challenge 1-------------------->')
 console.log(room(array));
+console.log('Challenge 2-------------------->')
+console.log(answer(array2, 5));
