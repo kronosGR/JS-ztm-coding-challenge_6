@@ -6,7 +6,6 @@
 let array = [1, 2, 4, 591, 392, 391, 2, 5, 10, 2, 1, 1, 1, 20, 20];
 
 function room(arrayInput) {
-  arrayInput.push(Number.MAX_VALUE);
   arrayInput.sort((a, b) => a - b);
   const orderedArray = [];
   const stringsArray = [];
@@ -22,14 +21,13 @@ function room(arrayInput) {
       tmpArray.push(arrayInput[i + 1]);
       i++;
     }
-    if (tmpArray.length > 1) {
+    if (tmpArray.length > 0) {
       orderedArray.push(tmpArray);
     } else {
       orderedArray.push(tmpArray.pop());
     }
   }
-  orderedArray.pop();
-  orderedArray.push(stringsArray);
+  if (stringsArray.length > 0) orderedArray.push(stringsArray);
   return orderedArray;
 };
 
