@@ -49,7 +49,29 @@ function answer(arr, target) {
 // Question 3: Write a function that converts HEX to RGB. Then Make that function autodect the formats so that if you enter
 // HEX color format it returns RGB and if you enter RGB color format it returns HEX. Bonus: Release this tool as a npm package.
 
-console.log('Challenge 1-------------------->')
+function hexToRgbORvv(v) {
+  let trimmedValue = v.trim();
+  if (trimmedValue.charAt(0) === '#') {
+    trimmedValue = parseInt(trimmedValue.slice(1, 3), 16) + ',' + parseInt(trimmedValue.slice(3, 5), 16) + ','
+      + parseInt(trimmedValue.slice(5, 7), 16);
+  } else {
+    trimmedValue = trimmedValue.toLowerCase();
+    trimmedValue = trimmedValue.slice(4, trimmedValue.length - 1);
+    const values = trimmedValue.split(',');
+    trimmedValue = values.reduce((accumulator, value) => {
+      const n = parseInt(value);
+      accumulator += ('00' + n.toString(16)).substr(-2);
+      return accumulator;
+    }, '#');
+  }
+  return trimmedValue;
+
+}
+
+console.log('Challenge 1-------------------->');
 console.log(room(array));
-console.log('Challenge 2-------------------->')
+console.log('Challenge 2-------------------->');
 console.log(answer(array2, 5));
+console.log('Challenge 3-------------------->');
+console.log(hexToRgbORvv('#ffffff'));
+console.log(hexToRgbORvv('#000000'));
